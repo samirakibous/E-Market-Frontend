@@ -46,7 +46,7 @@ export default function Home() {
   <div className="absolute inset-0 bg-gradient-to-r from-purple-900/60 to-pink-900/60 dark:from-purple-950/80 dark:to-pink-950/80 flex items-center justify-center">
           <div className="text-center">
             <h1 className="text-white text-4xl md:text-6xl font-bold drop-shadow-lg mb-4 dark:text-yellow-300">
-              Bienvenue sur <span className="text-yellow-400">Skommerce</span>
+              Bienvenue sur <span className="text-yellow-400">EMarket</span>
             </h1>
             <p className="text-white/90 text-lg md:text-xl max-w-2xl mx-auto px-4 dark:text-white/80">
               Découvrez nos produits exceptionnels à des prix imbattables

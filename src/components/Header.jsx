@@ -1,13 +1,27 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-
+import api from "../api/api"; 
 export default function Header() {
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
   const [dark, setDark] = useState(
     localStorage.getItem("darkMode") === "true"
   );
+  const [isLoggedIn, setIsLoggedIn] = useState(
+  !!localStorage.getItem("token") //transormer le token en boolean
+);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const handleLogout = async () => {
+  try {
+    await api.post("/auth/logout");
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+    navigate("/login");
+  } catch (err) {
+    console.error("Erreur lors de la déconnexion :", err);
+  }
+};
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -37,7 +51,7 @@ export default function Header() {
                 </svg>
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                Skommerce
+                EMarket
               </span>
             </Link>
           </div>
@@ -98,16 +112,27 @@ export default function Header() {
             </Link>
 
             {/* Bouton Login/Profile */}
-            <Link 
-              to="/login"
-              className="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors"
+            {isLoggedIn ? (
+            <button
+                onClick={handleLogout}
+                className="flex items-center gap-2 px-4 py-2 bg-black text-white rounded-lg font-medium hover:bg-red-600 transition-colors"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
-              Connexion
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 11-4 0v-1m0-8V7a2 2 0 114 0v1" />
+                </svg>
+                Déconnexion
+            </button>
+            ) : (
+            <Link 
+            to="/login"
+            className="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors"
+            >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+            Connexion
             </Link>
-
+            )}
             {/* Toggle Dark Mode */}
             <button
               onClick={toggleDark}

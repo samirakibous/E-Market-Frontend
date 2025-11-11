@@ -43,7 +43,7 @@ export default function Login() {
               className="w-full h-96 object-cover rounded-lg shadow-2xl"
             />
           </div>
-          <h2 className="text-3xl font-bold mb-4">skommerce</h2>
+          <h2 className="text-3xl font-bold mb-4">EMarket</h2>
           <p className="text-lg opacity-90">
             Welcome back! Login to continue browsing your favorite fashion items.
           </p>
@@ -61,7 +61,7 @@ export default function Login() {
           </button>
 
           <div className="mb-8">
-            <h1 className="text-sm font-medium text-gray-600 mb-2">skommerce</h1>
+            <h1 className="text-sm font-medium text-gray-600 mb-2">EMarket</h1>
             <h2 className="text-3xl font-bold text-gray-900">Login to your account</h2>
           </div>
 
