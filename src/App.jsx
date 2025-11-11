@@ -8,6 +8,7 @@ import CategoryProducts from "./pages/CategoryProducts";
 import ProductDetails from "./pages/ProductDetails";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import NotFound from "./components/NotFound";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -34,6 +35,7 @@ function App() {
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </Router>
