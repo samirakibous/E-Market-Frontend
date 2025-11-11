@@ -9,7 +9,7 @@ const api = axios.create({
 
 // Intercepteur pour ajouter automatiquement le token JWT à chaque requête
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem("token"); // récupère le token depuis localStorage
+  const token = localStorage.getItem("token");
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -19,16 +19,18 @@ api.interceptors.request.use((config) => {
 });
 
 // Optionnel : intercepteur pour gérer les erreurs globales
-api.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    if (error.response && error.response.status === 401) {
-      // Token invalide ou expiré → redirection vers la page login
-      localStorage.removeItem("token");
-      window.location.href = "/login";
-    }
-    return Promise.reject(error);
-  }
-);
+// api.interceptors.response.use(
+//   (response) => response,
+//   (error) => {
+//     if (error.response && error.response.status === 401) {
+//       // Token invalide ou expiré → redirection vers la page login
+//       //exception pour home
+//       if (window.location.pathname === "/") return;
+//       localStorage.removeItem("token");
+//       window.location.href = "/login";
+//     }
+//     return Promise.reject(error);
+//   }
+// );
 
 export default api;
