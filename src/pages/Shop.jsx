@@ -1,7 +1,7 @@
 // src/pages/Shop.jsx
 import { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
-import api from "../api/api";
+import api from "../services/api";
 
 export default function Shop() {
   const { search } = useLocation();

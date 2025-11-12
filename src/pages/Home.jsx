@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "../api/api";
+import api from "../services/api";
 import { useNavigate } from "react-router-dom";
 
 export default function Home() {

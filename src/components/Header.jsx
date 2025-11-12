@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import api from "../api/api"; 
+import api from "../services/api"; 
 export default function Header() {
   const navigate = useNavigate();
   const [query, setQuery] = useState("");

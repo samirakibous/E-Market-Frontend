@@ -1,7 +1,7 @@
 // src/pages/CategoryProducts.jsx
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import api from "../api/api";
+import api from "../services/api";
 
 export default function CategoryProducts() {
   const { id } = useParams(); // Récupérer l'ID de la catégorie depuis l'URL
