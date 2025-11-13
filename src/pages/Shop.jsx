@@ -59,7 +59,7 @@ export default function Shop() {
                 src={
                   product.primaryImage
                     ? `${import.meta.env.VITE_BASE_URL}${product.primaryImage}`
-                    : "https://via.placeholder.com/200"
+                    : "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80"
                 }
                 alt={product.title}
                 className="w-full h-48 object-cover rounded-lg mb-3"

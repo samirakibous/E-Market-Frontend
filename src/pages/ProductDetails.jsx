@@ -12,7 +12,6 @@ export default function ProductDetails() {
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(null);
   const [quantity, setQuantity] = useState(1);
-  const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     const fetchProductAndReviews = async () => {
@@ -44,10 +43,6 @@ export default function ProductDetails() {
       }
       return <span key={i} className="text-gray-300">★</span>;
     });
-  };
-
-  const handleAddToCart = () => {
-    alert(`${quantity} article(s) ajouté(s) au panier !`);
   };
 
   if (loading) {

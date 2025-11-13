@@ -33,33 +33,33 @@ export default function Login() {
   return (
     <div className="min-h-screen flex">
       {/* Left Side - Image */}
-      <div className="hidden lg:flex lg:w-1/2 bg-yellow-400 from-blue-400 to-blue-600 relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/20" />
-        <div className="relative z-10 flex flex-col justify-end p-12 text-white">
-          <div className="mb-8">
-            <img
-              src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=80"
-              alt="Fashion"
-              className="w-full h-96 object-cover rounded-lg shadow-2xl"
-            />
-          </div>
-          <h2 className="text-3xl font-bold mb-4">EMarket</h2>
-          <p className="text-lg opacity-90">
-            Welcome back! Login to continue browsing your favorite fashion items.
-          </p>
-        </div>
-      </div>
+         <div className="hidden lg:block lg:w-1/2 relative">
+                <img
+                    src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80"
+                    alt="Shopping"
+                    className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/40"></div>
+                <div className="absolute bottom-8 left-8 right-8 text-white">
+                    <div className="flex items-center gap-3 mb-4">
+                        <div className="w-12 h-12 bg-yellow-400 rounded-xl flex items-center justify-center">
+                            <svg className="w-7 h-7 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                        </div>
+                        <span className="text-2xl font-bold">EMarket</span>
+                    </div>
+                    <h2 className="text-3xl font-bold mb-2">Bienvenue sur EMarket</h2>
+                    <p className="text-lg text-white/90">
+                        Votre destination shopping en ligne pour des produits de qualité
+                    </p>
+                </div>
+         </div>
 
       {/* Right Side - Form */}
       <div className="flex-1 flex items-center justify-center p-8 bg-gray-50 relative">
         <div className="w-full max-w-md relative">
-          <button
-            onClick={() => navigate("/")}
-            className="absolute top-8 right-8 w-8 h-8 rounded-full border-2 border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors"
-          >
-            <X className="w-5 h-5 text-gray-600" />
-          </button>
-
+          
           <div className="mb-8">
             <h1 className="text-sm font-medium text-gray-600 mb-2">EMarket</h1>
             <h2 className="text-3xl font-bold text-gray-900">Login to your account</h2>
