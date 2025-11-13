@@ -9,6 +9,7 @@ import ProductDetails from "./pages/ProductDetails";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import NotFound from "./components/NotFound";
+import RequireAuth from "./components/RequireAuth";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -19,12 +20,6 @@ function App() {
     if (saved) setDarkMode(saved === "true");
   }, []);
 
-  //Appliquer la classe "dark" sur <html> à chaque changement
-  // useEffect(() => {
-  //   document.documentElement.classList.toggle("dark", darkMode);
-  //   localStorage.setItem("darkMode", darkMode);
-  // }, [darkMode]);
-
   return (
     <Router>
       <Header darkMode={darkMode} setDarkMode={setDarkMode} />
@@ -32,7 +27,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/category/:id" element={<CategoryProducts />} />
-        <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="/product/:id" element={
+          <RequireAuth>
+            <ProductDetails />
+          </RequireAuth> } />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />

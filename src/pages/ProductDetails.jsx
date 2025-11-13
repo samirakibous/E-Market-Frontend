@@ -77,11 +77,11 @@ export default function ProductDetails() {
   ].filter(Boolean);
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 dark:text-gray-100">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 dark:text-white">
       {/* Contenu principal */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
-          <div className="grid lg:grid-cols-2 gap-8 p-6 lg:p-10 dark:bg-gray-900 dark:text-gray-100">
+          <div className="grid lg:grid-cols-2 gap-8 p-6 lg:p-10 dark:bg-gray-900 dark:text-white">
             {/* Galerie d'images */}
             <div className="space-y-4">
               <div className="relative aspect-square bg-gray-100 rounded-xl overflow-hidden group dark:bg-gray-800 dark:text-white">
@@ -143,7 +143,7 @@ export default function ProductDetails() {
                 )}
 
                 {/* Titre */}
-                <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 dark:text-white">
                   {product.title}
                 </h1>
 
@@ -163,54 +163,20 @@ export default function ProductDetails() {
                 </div>
 
                 {/* Description */}
-                <p className="text-gray-600 leading-relaxed mb-6">
+                <p className="text-gray-600 leading-relaxed mb-6 dark:text-white">
                   {product.description || "Aucune description disponible."}
                 </p>
 
                 {/* Stock */}
-                <div className="flex items-center gap-2 mb-6 p-4 bg-gray-50 rounded-lg">
+                <div className="flex items-center gap-2 mb-6 p-4 bg-gray-50 rounded-lg dark:bg-gray-800 dark:text-white">
                   <span className="text-2xl">📦</span>
                   <div>
-                    <p className="text-sm text-gray-600">Disponibilité</p>
+                    <p className="text-sm text-gray-600 dark:text-white">Disponibilité</p>
                     <p className={`font-semibold ${product.stock > 0 ? 'text-green-600' : 'text-red-600'}`}>
                       {product.stock > 0 ? `${product.stock} en stock` : 'Rupture de stock'}
                     </p>
                   </div>
                 </div>
-
-                {/* Quantité et Ajout au panier */}
-                <div className="space-y-4 mb-6">
-                  <div className="flex items-center gap-4">
-                    <span className="text-gray-700 font-medium">Quantité :</span>
-                    <div className="flex items-center border-2 border-gray-300 rounded-lg overflow-hidden">
-                      <button
-                        onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                        className="px-4 py-2 hover:bg-gray-100 transition text-lg font-semibold disabled:opacity-50"
-                        disabled={quantity <= 1}
-                      >
-                        -
-                      </button>
-                      <span className="px-6 py-2 border-x-2 border-gray-300 font-semibold min-w-[60px] text-center">
-                        {quantity}
-                      </span>
-                      <button
-                        onClick={() => setQuantity(Math.min(product.stock, quantity + 1))}
-                        className="px-4 py-2 hover:bg-gray-100 transition text-lg font-semibold disabled:opacity-50"
-                        disabled={quantity >= product.stock}
-                      >
-                        +
-                      </button>
-                    </div>
-                  </div>
-
-                  <button
-                    className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-indigo-600 text-white rounded-xl font-semibold text-lg hover:bg-indigo-700 active:scale-95 transition-all disabled:bg-gray-300 disabled:cursor-not-allowed disabled:active:scale-100"
-                  >
-                    <span className="text-xl">🛒</span>
-                    {product.stock === 0 ? 'Rupture de stock' : 'Ajouter au panier'}
-                  </button>
-                </div>
-
                 {/* Avantages */}
                 <div className="grid grid-cols-1 gap-3 pt-6 border-t border-gray-200">
                   <div className="flex items-center gap-3 text-sm text-gray-600">
@@ -252,9 +218,6 @@ export default function ProductDetails() {
             <h2 className="text-2xl font-bold text-gray-900">
               Avis clients ({reviews.length})
             </h2>
-            <button className="px-5 py-2.5 border-2 border-indigo-600 text-indigo-600 rounded-lg font-medium hover:bg-indigo-50 active:scale-95 transition-all">
-              ✍️ Écrire un avis
-            </button>
           </div>
 
           {/* Résumé des notes */}
