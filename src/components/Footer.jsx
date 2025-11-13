@@ -11,12 +11,12 @@ export default function Footer() {
           {/* À propos */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-yellow-400 from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
-              <span className="text-xl font-bold text-white">Skommerce</span>
+              <span className="text-xl font-bold text-white">EMarket</span>
             </div>
             <p className="text-sm text-gray-400 leading-relaxed">
               Votre destination en ligne pour des produits de qualité à des prix compétitifs. Livraison rapide et service client exceptionnel.
@@ -139,8 +139,8 @@ export default function Footer() {
                 <svg className="w-5 h-5 text-indigo-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <a href="mailto:contact@skommerce.ma" className="hover:text-indigo-400 transition-colors">
-                  contact@skommerce.ma
+                <a href="mailto:contact@EMarket.ma" className="hover:text-indigo-400 transition-colors">
+                  contact@EMarket.ma
                 </a>
               </li>
               <li className="flex items-center gap-3 text-sm">
@@ -161,7 +161,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-gray-400">
-              &copy; {currentYear} Skommerce. Tous droits réservés.
+              &copy; {currentYear} EMarket. Tous droits réservés.
             </p>
             <div className="flex flex-wrap justify-center gap-6 text-sm">
               <Link to="/privacy" className="text-gray-400 hover:text-indigo-400 transition-colors">

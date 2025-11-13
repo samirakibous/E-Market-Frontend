@@ -41,98 +41,41 @@ export default function Register() {
 
     return (
         <div className="min-h-screen flex">
-            {/* Left Side - Image & Brand */}
-            <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 relative overflow-hidden">
-                {/* Pattern overlay */}
-                <div className="absolute inset-0 opacity-10">
-                    <div className="absolute inset-0" style={{
-                        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-                    }}></div>
-                </div>
-
-                <div className="relative z-10 flex flex-col justify-between p-12 text-white w-full">
-                    {/* Logo */}
-                    <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                            <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+            {/* Left Side - Image */}
+            <div className="hidden lg:block lg:w-1/2 relative">
+                <img
+                    src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80"
+                    alt="Shopping"
+                    className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/40"></div>
+                <div className="absolute bottom-8 left-8 right-8 text-white">
+                    <div className="flex items-center gap-3 mb-4">
+                        <div className="w-12 h-12 bg-yellow-400 rounded-xl flex items-center justify-center">
+                            <svg className="w-7 h-7 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                             </svg>
                         </div>
-                        <span className="text-2xl font-bold">Skommerce</span>
+                        <span className="text-2xl font-bold">EMarket</span>
                     </div>
-
-                    {/* Center Content */}
-                    <div className="space-y-8">
-                        <div>
-                            <h2 className="text-4xl lg:text-5xl font-bold mb-4 leading-tight">
-                                Rejoignez notre communauté
-                            </h2>
-                            <p className="text-lg text-white/90 leading-relaxed">
-                                Découvrez une expérience d'achat unique avec des milliers de produits de qualité, 
-                                des offres exclusives et une livraison rapide partout au Maroc.
-                            </p>
-                        </div>
-
-                        {/* Features */}
-                        <div className="space-y-4">
-                            <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center flex-shrink-0">
-                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                    </svg>
-                                </div>
-                                <span className="text-white/90">Livraison gratuite dès 500 MAD</span>
-                            </div>
-                            <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center flex-shrink-0">
-                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                    </svg>
-                                </div>
-                                <span className="text-white/90">Retours gratuits sous 30 jours</span>
-                            </div>
-                            <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center flex-shrink-0">
-                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                    </svg>
-                                </div>
-                                <span className="text-white/90">Support client 24/7</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Bottom Stats */}
-                    <div className="grid grid-cols-3 gap-4">
-                        <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                            <div className="text-3xl font-bold mb-1">10K+</div>
-                            <div className="text-sm text-white/80">Produits</div>
-                        </div>
-                        <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                            <div className="text-3xl font-bold mb-1">50K+</div>
-                            <div className="text-sm text-white/80">Clients</div>
-                        </div>
-                        <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                            <div className="text-3xl font-bold mb-1">4.8</div>
-                            <div className="text-sm text-white/80">Note moyenne</div>
-                        </div>
-                    </div>
+                    <h2 className="text-3xl font-bold mb-2">Bienvenue sur EMarket</h2>
+                    <p className="text-lg text-white/90">
+                        Votre destination shopping en ligne pour des produits de qualité
+                    </p>
                 </div>
             </div>
 
             {/* Right Side - Form */}
-            <div className="flex-1 flex items-center justify-center p-8 bg-gray-50">
+            <div className="flex-1 flex items-center justify-center p-8 bg-white">
                 <div className="w-full max-w-md">
                     {/* Logo Mobile */}
                     <div className="lg:hidden flex items-center justify-center gap-2 mb-8">
-                        <div className="w-10 h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center">
-                            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                        <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center">
+                            <svg className="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                             </svg>
                         </div>
-                        <span className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                            Skommerce
-                        </span>
+                        <span className="text-2xl font-bold text-black">EMarket</span>
                     </div>
 
                     {/* Header */}
@@ -170,7 +113,7 @@ export default function Register() {
                     <form onSubmit={handleSubmit} className="space-y-5">
                         {/* Full Name */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                            <label className="block text-sm font-medium text-gray-900 mb-2">
                                 Nom complet
                             </label>
                             <div className="relative">
@@ -185,7 +128,7 @@ export default function Register() {
                                     onChange={(e) =>
                                         setFormData({ ...formData, fullname: e.target.value })
                                     }
-                                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all"
+                                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-all"
                                     placeholder="Ahmed Bennani"
                                     required
                                 />
@@ -194,7 +137,7 @@ export default function Register() {
 
                         {/* Email */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                            <label className="block text-sm font-medium text-gray-900 mb-2">
                                 Adresse email
                             </label>
                             <div className="relative">
@@ -209,7 +152,7 @@ export default function Register() {
                                     onChange={(e) =>
                                         setFormData({ ...formData, email: e.target.value })
                                     }
-                                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all"
+                                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-all"
                                     placeholder="ahmed@example.com"
                                     required
                                 />
@@ -218,7 +161,7 @@ export default function Register() {
 
                         {/* Password */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                            <label className="block text-sm font-medium text-gray-900 mb-2">
                                 Mot de passe
                             </label>
                             <div className="relative">
@@ -233,7 +176,7 @@ export default function Register() {
                                     onChange={(e) =>
                                         setFormData({ ...formData, password: e.target.value })
                                     }
-                                    className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all"
+                                    className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-all"
                                     placeholder="••••••••"
                                     required
                                 />
@@ -263,7 +206,7 @@ export default function Register() {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-indigo-500/50 hover:shadow-xl hover:shadow-indigo-500/50"
+                            className="w-full bg-black text-white py-3.5 rounded-lg font-semibold hover:bg-gray-800 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
                         >
                             {loading ? (
                                 <span className="flex items-center justify-center gap-2">
@@ -283,7 +226,7 @@ export default function Register() {
                             <span className="text-gray-600 text-sm">Vous avez déjà un compte ? </span>
                             <button
                                 type="button"
-                                className="text-indigo-600 font-semibold hover:text-indigo-700 text-sm transition-colors"
+                                className="text-black font-semibold hover:underline text-sm transition-colors"
                                 onClick={() => navigate("/login")}
                             >
                                 Se connecter
@@ -297,7 +240,7 @@ export default function Register() {
                             <div className="w-full border-t border-gray-300"></div>
                         </div>
                         <div className="relative flex justify-center text-sm">
-                            <span className="px-4 bg-gray-50 text-gray-500">Ou continuer avec</span>
+                            <span className="px-4 bg-white text-gray-500">Ou continuer avec</span>
                         </div>
                     </div>
 
@@ -305,7 +248,7 @@ export default function Register() {
                     <div className="grid grid-cols-2 gap-3">
                         <button
                             type="button"
-                            className="flex items-center justify-center gap-2 px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                            className="flex items-center justify-center gap-2 px-4 py-3 border-2 border-gray-300 rounded-lg hover:bg-gray-50 hover:border-gray-400 transition-all"
                         >
                             <svg className="w-5 h-5" viewBox="0 0 24 24">
                                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -317,7 +260,7 @@ export default function Register() {
                         </button>
                         <button
                             type="button"
-                            className="flex items-center justify-center gap-2 px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                            className="flex items-center justify-center gap-2 px-4 py-3 border-2 border-gray-300 rounded-lg hover:bg-gray-50 hover:border-gray-400 transition-all"
                         >
                             <svg className="w-5 h-5" fill="#1877F2" viewBox="0 0 24 24">
                                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>

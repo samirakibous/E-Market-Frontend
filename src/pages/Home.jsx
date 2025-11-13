@@ -80,15 +80,13 @@ export default function Home() {
                 className="flex-shrink-0 w-44 h-48 bg-white dark:bg-gray-800 rounded-2xl shadow hover:shadow-xl transition-all cursor-pointer transform hover:-translate-y-1"
                 onClick={() => navigate(`/category/${cat._id}`)}
               >
-                <div className="w-full h-32 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-950 dark:to-purple-950 rounded-t-2xl overflow-hidden">
+                <div className="w-full h-32 bg-yellow-400 from-blue-100 to-purple-100 dark:from-blue-950 dark:to-purple-950 rounded-t-2xl overflow-hidden">
                   <img
-                    src={`https://picsum.photos/seed/${cat._id}/500/400`}
-                    alt={cat.name || "Category"}
-                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                    onError={(e) => {
-                      e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(cat.name)}&size=500&background=random`;
-                    }}
-                  />
+                  src="https://plus.unsplash.com/premium_vector-1683134288584-d2d5f6d714d2?q=80&w=993&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  alt={cat.name || "Category"}
+                  className="w-full h-full object-cover"
+                />
+                  
                 </div>
                 <div className="p-3 text-center">
                   <h3 className="text-gray-800 dark:text-gray-100 font-medium truncate">

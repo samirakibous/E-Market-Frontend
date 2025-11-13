@@ -82,31 +82,14 @@ export default function ProductDetails() {
   ].filter(Boolean);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Breadcrumb */}
-      <div className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center gap-2 text-sm text-gray-600">
-            <button onClick={() => navigate('/')} className="hover:text-indigo-600 transition">
-              Accueil
-            </button>
-            <span>/</span>
-            <button onClick={() => navigate(-1)} className="hover:text-indigo-600 transition">
-              Produits
-            </button>
-            <span>/</span>
-            <span className="text-gray-900 font-medium">{product.title}</span>
-          </div>
-        </div>
-      </div>
-
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 dark:text-gray-100">
       {/* Contenu principal */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
-          <div className="grid lg:grid-cols-2 gap-8 p-6 lg:p-10">
+          <div className="grid lg:grid-cols-2 gap-8 p-6 lg:p-10 dark:bg-gray-900 dark:text-gray-100">
             {/* Galerie d'images */}
             <div className="space-y-4">
-              <div className="relative aspect-square bg-gray-100 rounded-xl overflow-hidden group">
+              <div className="relative aspect-square bg-gray-100 rounded-xl overflow-hidden group dark:bg-gray-800 dark:text-white">
                 <img
                   src={
                     selectedImage
@@ -119,14 +102,6 @@ export default function ProductDetails() {
                     e.target.src = "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80";
                   }}
                 />
-                <button
-                  onClick={() => setIsFavorite(!isFavorite)}
-                  className="absolute top-4 right-4 p-3 bg-white rounded-full shadow-lg hover:scale-110 transition-transform"
-                >
-                  <span className={`text-2xl ${isFavorite ? 'text-red-500' : 'text-gray-400'}`}>
-                    {isFavorite ? '❤️' : '🤍'}
-                  </span>
-                </button>
               </div>
 
               {allImages.length > 1 && (
@@ -334,7 +309,7 @@ export default function ProductDetails() {
                 <div key={review._id} className="border-b border-gray-100 pb-6 last:border-0">
                   <div className="flex items-start gap-4">
                     {/* Avatar */}
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-400 to-purple-400 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
+                    <div className="w-12 h-12 rounded-full bg-yellow-400 from-indigo-400 to-purple-400 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
                       {review.user.fullname.charAt(0).toUpperCase()}
                     </div>
                     

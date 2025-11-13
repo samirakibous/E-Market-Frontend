@@ -33,7 +33,7 @@ export default function Login() {
   return (
     <div className="min-h-screen flex">
       {/* Left Side - Image */}
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-blue-400 to-blue-600 relative overflow-hidden">
+      <div className="hidden lg:flex lg:w-1/2 bg-yellow-400 from-blue-400 to-blue-600 relative overflow-hidden">
         <div className="absolute inset-0 bg-black/20" />
         <div className="relative z-10 flex flex-col justify-end p-12 text-white">
           <div className="mb-8">

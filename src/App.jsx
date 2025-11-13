@@ -13,17 +13,17 @@ import NotFound from "./components/NotFound";
 function App() {
   const [darkMode, setDarkMode] = useState(false);
 
-  // 🔹 Charger la préférence depuis localStorage au montage
+  //Charger la préférence depuis localStorage au montage
   useEffect(() => {
     const saved = localStorage.getItem("darkMode");
     if (saved) setDarkMode(saved === "true");
   }, []);
 
-  // 🔹 Appliquer la classe "dark" sur <html> à chaque changement
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", darkMode);
-    localStorage.setItem("darkMode", darkMode);
-  }, [darkMode]);
+  //Appliquer la classe "dark" sur <html> à chaque changement
+  // useEffect(() => {
+  //   document.documentElement.classList.toggle("dark", darkMode);
+  //   localStorage.setItem("darkMode", darkMode);
+  // }, [darkMode]);
 
   return (
     <Router>
