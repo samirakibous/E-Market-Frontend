@@ -204,8 +204,6 @@ export default function ProductDetails() {
                   </div>
 
                   <button
-                    onClick={handleAddToCart}
-                    disabled={product.stock === 0}
                     className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-indigo-600 text-white rounded-xl font-semibold text-lg hover:bg-indigo-700 active:scale-95 transition-all disabled:bg-gray-300 disabled:cursor-not-allowed disabled:active:scale-100"
                   >
                     <span className="text-xl">🛒</span>

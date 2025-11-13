@@ -1,16 +1,32 @@
-# React + Vite
+# 🛒 E-Market
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🧩 Overview
+**E-Market** is a modern e-commerce platform built with the **MERN** stack, featuring a responsive UI, efficient backend, and scalable deployment setup.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Technologies
 
-## React Compiler
+### Core Stack
+- **MongoDB** – NoSQL database for scalable data storage  
+- **Express.js** – Backend framework for building APIs  
+- **React.js** – Frontend library for dynamic and interactive UI  
+- **Node.js** – Runtime environment for the backend  
+- **Tailwind CSS** – Utility-first CSS framework for rapid styling  
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Additional Tools
+- **Figma** – UI/UX design and prototyping  
+- **Jira** – Task and project management  
+- **AWS EC2** – Cloud hosting and deployment  
+- **Docker** – Containerization for consistent environments  
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🎨 Design
+You can view the Figma design prototype here:  
+👉 [E-Market Figma Design](https://www.figma.com/design/KwXs6Ztzesptxamd31HSF2/Project-Management-Dashboard---FREE--Community-?node-id=6-362&t=CRJ0EKJG5JkE19GJ-1)
+
+---
+
+## 🧠 Notes
+This project focuses on building a robust e-commerce foundation with authentication, product management, and a clean modern user interface.
