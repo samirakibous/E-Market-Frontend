@@ -2,89 +2,84 @@ import { useState } from "react";
 import { Eye, EyeOff, X } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+const schema = yup.object({
+  email: yup.string().required("L'email est requis").email("Email invalide"),
+  password: yup.string().required("Le mot de passe est requis").min(6, "Au moins 6 caractères"),
+}).required();
 
 export default function Login() {
-    const navigate = useNavigate();
-  const { login } = useAuth();
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const { login } = useAuth();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    setLoading(true);
+  const { register: loginField, handleSubmit, formState: { errors, isSubmitting } } = useForm({
+    resolver: yupResolver(schema),
+  });
+  const onSubmit = async (data) => {
     try {
-      await login(formData.email, formData.password);
-      // redirection après login réussi
-      navigate("/");
+      await login(data.email, data.password);
+      toast.success("Connexion réussie ! Redirection...");
+      setTimeout(() => navigate("/"), 1000);
     } catch (err) {
-      console.error(err);
-      setError("Email ou mot de passe incorrect ❌");
-    } finally {
-      setLoading(false);
+      toast.error("Email ou mot de passe incorrect ❌");
     }
   };
+
 
   return (
     <div className="min-h-screen flex">
       {/* Left Side - Image */}
-         <div className="hidden lg:block lg:w-1/2 relative">
-                <img
-                    src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80"
-                    alt="Shopping"
-                    className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/40"></div>
-                <div className="absolute bottom-8 left-8 right-8 text-white">
-                    <div className="flex items-center gap-3 mb-4">
-                        <div className="w-12 h-12 bg-yellow-400 rounded-xl flex items-center justify-center">
-                            <svg className="w-7 h-7 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                            </svg>
-                        </div>
-                        <span className="text-2xl font-bold">EMarket</span>
-                    </div>
-                    <h2 className="text-3xl font-bold mb-2">Bienvenue sur EMarket</h2>
-                    <p className="text-lg text-white/90">
-                        Votre destination shopping en ligne pour des produits de qualité
-                    </p>
-                </div>
-         </div>
+      <div className="hidden lg:block lg:w-1/2 relative">
+        <img
+          src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80"
+          alt="Shopping"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute bottom-8 left-8 right-8 text-white">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-12 h-12 bg-yellow-400 rounded-xl flex items-center justify-center">
+              <svg className="w-7 h-7 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </div>
+            <span className="text-2xl font-bold">EMarket</span>
+          </div>
+          <h2 className="text-3xl font-bold mb-2">Bienvenue sur EMarket</h2>
+          <p className="text-lg text-white/90">
+            Votre destination shopping en ligne pour des produits de qualité
+          </p>
+        </div>
+      </div>
 
       {/* Right Side - Form */}
       <div className="flex-1 flex items-center justify-center p-8 bg-gray-50 relative">
         <div className="w-full max-w-md relative">
-          
+
           <div className="mb-8">
             <h1 className="text-sm font-medium text-gray-600 mb-2">EMarket</h1>
             <h2 className="text-3xl font-bold text-gray-900">Login to your account</h2>
           </div>
-
-          {error && (
-            <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">
-              {error}
-            </div>
-          )}
-
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Email
               </label>
               <input
                 type="email"
-                value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
+                {...loginField("email")}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-all"
                 placeholder="magikpro@mail.com"
               />
+              {errors.email && (
+                <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+              )}
             </div>
 
             <div>
@@ -94,10 +89,7 @@ export default function Login() {
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
-                  value={formData.password}
-                  onChange={(e) =>
-                    setFormData({ ...formData, password: e.target.value })
-                  }
+                  {...loginField("password")}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-all pr-12"
                   placeholder="········"
                 />
@@ -106,17 +98,20 @@ export default function Login() {
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
                 >
-                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                  {showPassword ? <EyeOff /> : <Eye />}
                 </button>
               </div>
+              {errors.password && (
+                <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>
+              )}
             </div>
 
             <button
               type="submit"
-              disabled={loading}
+              disabled={isSubmitting}
               className="w-full bg-black text-white py-3 rounded-full font-medium hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? "Logging in..." : "Login"}
+              {isSubmitting ? "Logging in..." : "Login"}
             </button>
 
             <div className="text-center text-sm mt-2">
@@ -132,6 +127,17 @@ export default function Login() {
           </form>
         </div>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }

@@ -1,43 +1,37 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { useForm } from "react-hook-form";
 
+const schema = yup.object({
+  fullname: yup.string().required("Le nom complet est requis").min(3, "Au moins 3 caractères"),
+  email: yup.string().required("L'email est requis").email("Email invalide"),
+  password: yup.string().required("Le mot de passe est requis").min(6, "Au moins 6 caractères"),
+}).required();
 export default function Register() {
     const navigate = useNavigate();
-    const { register } = useAuth();
-    const [formData, setFormData] = useState({
-        fullname: "",
-        email: "",
-        password: "",
-    });
+    const { register: registerUser } = useAuth();
+
+    const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
+    resolver: yupResolver(schema),
+  });
     const [showPassword, setShowPassword] = useState(false);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState("");
-    const [success, setSuccess] = useState(false);
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setError("");
-        setSuccess(false);
-
-        setLoading(true);
-        try {
-            await register({
-                fullname: formData.fullname,
-                email: formData.email,
-                password: formData.password,
-            });
-            setSuccess(true);
-            setTimeout(() => {
-                navigate("/");
-            }, 2000);
-        } catch (err) {
-            console.error(err);
-            setError("Erreur lors de la création du compte. Essayez à nouveau !");
-        } finally {
-            setLoading(false);
-        }
-    };
+const onSubmit = async (data) => {
+    try {
+      await registerUser(data);
+      toast.success("Compte créé avec succès ! Redirection en cours...");
+      setTimeout(() => navigate("/"), 2000);
+    } catch (err) {
+      const message = err.response?.data?.errors
+        ? Object.values(err.response.data.errors)[0]
+        : "Erreur lors de la création du compte. Essayez à nouveau !";
+      toast.error(message);
+    }
+  };
 
     return (
         <div className="min-h-screen flex">
@@ -88,29 +82,8 @@ export default function Register() {
                         </p>
                     </div>
 
-                    {/* Alerts */}
-                    {error && (
-                        <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
-                            <svg className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            <span className="text-red-700 text-sm">{error}</span>
-                        </div>
-                    )}
-
-                    {success && (
-                        <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-start gap-3">
-                            <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            <span className="text-green-700 text-sm">
-                                Compte créé avec succès ! Redirection en cours...
-                            </span>
-                        </div>
-                    )}
-
                     {/* Form */}
-                    <form onSubmit={handleSubmit} className="space-y-5">
+                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                         {/* Full Name */}
                         <div>
                             <label className="block text-sm font-medium text-gray-900 mb-2">
@@ -124,14 +97,12 @@ export default function Register() {
                                 </div>
                                 <input
                                     type="text"
-                                    value={formData.fullname}
-                                    onChange={(e) =>
-                                        setFormData({ ...formData, fullname: e.target.value })
-                                    }
+                                    {...register("fullname")}
                                     className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-all"
                                     placeholder="full name"
                                     required
                                 />
+                                 {errors.fullname && <p className="text-red-600 text-sm mt-1">{errors.fullname.message}</p>}
                             </div>
                         </div>
 
@@ -148,14 +119,13 @@ export default function Register() {
                                 </div>
                                 <input
                                     type="email"
-                                    value={formData.email}
-                                    onChange={(e) =>
-                                        setFormData({ ...formData, email: e.target.value })
-                                    }
+                                    {...register("email")}
                                     className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-all"
                                     placeholder="email@example.com"
                                     required
                                 />
+                                 {errors.email && <p className="text-red-600 text-sm mt-1">{errors.email.message}</p>}
+            
                             </div>
                         </div>
 
@@ -172,14 +142,13 @@ export default function Register() {
                                 </div>
                                 <input
                                     type={showPassword ? "text" : "password"}
-                                    value={formData.password}
-                                    onChange={(e) =>
-                                        setFormData({ ...formData, password: e.target.value })
-                                    }
+                                    {...register("password")}
                                     className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-all"
                                     placeholder="••••••••"
                                     required
                                 />
+                                {errors.password && <p className="text-red-600 text-sm mt-1">{errors.password.message}</p>}
+           
                                 <button
                                     type="button"
                                     onClick={() => setShowPassword(!showPassword)}
@@ -205,10 +174,10 @@ export default function Register() {
                         {/* Submit Button */}
                         <button
                             type="submit"
-                            disabled={loading}
+                            disabled={isSubmitting}
                             className="w-full bg-black text-white py-3.5 rounded-lg font-semibold hover:bg-gray-800 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
                         >
-                            {loading ? (
+                            {isSubmitting ? (
                                 <span className="flex items-center justify-center gap-2">
                                     <svg className="animate-spin h-5 w-5" fill="none" viewBox="0 0 24 24">
                                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -236,6 +205,17 @@ export default function Register() {
 
                 </div>
             </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
         </div>
     );
 }
